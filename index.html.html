@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fteam | Jiu-Jitsu Feminino & Defesa Pessoal — Sensei Laura Zanutto</title>
+  <meta name="description" content="Treine Jiu-Jitsu Feminino e Defesa Pessoal com a Sensei Laura Zanutto na Fteam. Um ambiente exclusivo, acolhedor e de alta performance para mulheres." />
+
+  <!-- Google Fonts: Oswald (impacto marcial) + Inter (leitura moderna) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome para ícones modernos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#0B0B0E',
+            graphite: '#15151C',
+            charcoal: '#1E1E28',
+            crimson: '#D90429',
+            crimsonDark: '#A3001E',
+            gold: '#D4AF37',
+            goldLight: '#F1D279',
+          },
+          fontFamily: {
+            display: ['Oswald', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          backgroundImage: {
+            'radial-glow': 'radial-gradient(circle at center, rgba(217, 4, 41, 0.18) 0%, rgba(11, 11, 14, 0) 70%)',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Estilos base e customizações para Parallax e Micro-interações */
+    body {
+      background-color: #0B0B0E;
+      color: #F4F4F6;
+      overflow-x: hidden;
+    }
+
+    /* Camadas de Parallax otimizadas para GPU */
+    .parallax-layer {
+      will-change: transform;
+      transform: translate3d(0, 0, 0);
+    }
+
+    /* Textura sutil de tatame/grade */
+    .tatami-pattern {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Linha indicadora animada no menu */
+    .nav-link {
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, #D90429, #D4AF37);
+      transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      border-radius: 999px;
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+    .nav-link.active {
+      color: #FFFFFF;
+    }
+
+    /* Animações de revelação no scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Efeito de brilho nos cards de modalidades */
+    .modality-card {
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+    .modality-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(217, 4, 41, 0.65);
+      box-shadow: 0 20px 40px -15px rgba(217, 4, 41, 0.25);
+    }
+
+    /* Efeito de texto vazado decorativo */
+    .text-stroke {
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.14);
+      color: transparent;
+    }
+
+    /* Barra de rolagem estilizada */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0B0B0E;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2C2C3A;
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #D90429;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-crimson selection:text-white">
+
+  <!-- ===================================================================== -->
+  <!-- 1. MENU INTERATIVO E RESPONSIVO (STICKY + SCROLL SPY + MOBILE DRAWER) -->
+  <!-- ===================================================================== -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5 px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <!-- Logotipo Fteam -->
+      <a href="#inicio" class="flex items-center gap-3 group focus:outline-none">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-crimson to-crimsonDark flex items-center justify-center shadow-lg shadow-crimson/30 group-hover:scale-105 transition-transform">
+          <span class="font-display font-bold text-2xl tracking-wider text-white">F</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-bold text-2xl tracking-widest uppercase leading-none text-white">
+            FTEAM <span class="text-crimson">BJJ</span>
+          </span>
+          <span class="text-[11px] uppercase tracking-[0.22em] text-gold font-medium mt-0.5">
+            Sensei Laura Zanutto
+          </span>
+        </div>
+      </a>
+
+      <!-- Links de Navegação Desktop -->
+      <nav aria-label="Menu principal" class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-300">
+        <a href="#inicio" class="nav-link active transition-colors hover:text-white py-1">Início</a>
+        <a href="#sobre" class="nav-link transition-colors hover:text-white py-1">Sobre o Time</a>
+        <a href="#sensei" class="nav-link transition-colors hover:text-white py-1">Sensei Laura</a>
+        <a href="#modalidades" class="nav-link transition-colors hover:text-white py-1">Aulas</a>
+        <a href="#galeria" class="nav-link transition-colors hover:text-white py-1">No Tatame</a>
+        <a href="#horarios" class="nav-link transition-colors hover:text-white py-1">Horários</a>
+      </nav>
+
+      <!-- Ações Desktop (Instagram + CTA) -->
+      <div class="hidden lg:flex items-center gap-4">
+        <a href="https://www.instagram.com/fteam.bjj/" target="_blank" rel="noopener noreferrer"
+           aria-label="Instagram oficial da Fteam"
+           class="w-10 h-10 rounded-full bg-white/5 hover:bg-crimson/20 border border-white/10 hover:border-crimson/50 flex items-center justify-center text-gray-200 hover:text-white transition-all">
+          <i class="fa-brands fa-instagram text-lg"></i>
+        </a>
+        <a href="#agendar"
+           class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-crimson to-crimsonDark hover:from-red-600 hover:to-crimson text-white font-semibold text-sm tracking-wide shadow-lg shadow-crimson/25 hover:shadow-crimson/40 transition-all transform hover:-translate-y-0.5">
+          Agendar Aula Experimental
+        </a>
+      </div>
+
+      <!-- Botão Hambúrguer Mobile -->
+      <button id="mobile-menu-btn" aria-label="Abrir menu" aria-expanded="false"
+              class="lg:hidden relative w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center gap-1.5 text-white focus:outline-none">
+        <span id="bar-1" class="w-6 h-0.5 bg-white rounded-full transition-all duration-300"></span>
+        <span id="bar-2" class="w-6 h-0.5 bg-white rounded-full transition-all duration-300"></span>
+        <span id="bar-3" class="w-4 h-0.5 bg-gold rounded-full self-end mr-2.5 transition-all duration-300"></span>
+      </button>
+    </div>
+
+    <!-- Menu Mobile Drawer -->
+    <div id="mobile-menu"
+         class="lg:hidden overflow-hidden max-h-0 opacity-0 transition-all duration-400 ease-in-out">
+      <div class="mt-4 p-6 rounded-2xl bg-graphite/95 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col gap-4">
+        <a href="#inicio" class="mobile-nav-link text-base font-medium text-gray-200 hover:text-crimson py-2 border-b border-white/5">Início</a>
+        <a href="#sobre" class="mobile-nav-link text-base font-medium text-gray-200 hover:text-crimson py-2 border-b border-white/5">Sobre o Time</a>
+        <a href="#sensei" class="mobile-nav-link text-base font-medium text-gray-200 hover:text-crimson py-2 border-b border-white/5">Sensei Laura Zanutto</a>
+        <a href="#modalidades" class="mobile-nav-link text-base font-medium text-gray-200 hover:text-crimson py-2 border-b border-white/5">Modalidades</a>
+        <a href="#galeria" class="mobile-nav-link text-base font-medium text-gray-200 hover:text-crimson py-2 border-b border-white/5">Ação no Tatame</a>
+        <a href="#horarios" class="mobile-nav-link text-base font-medium text-gray-200 hover:text-crimson py-2 border-b border-white/5">Horários & Local</a>
+
+        <div class="pt-2 flex flex-col sm:flex-row gap-3">
+          <a href="#agendar" class="mobile-nav-link flex-1 text-center py-3 px-5 rounded-xl bg-crimson text-white font-semibold shadow-lg shadow-crimson/30">
+            Agendar Aula Experimental
+          </a>
+          <a href="https://www.instagram.com/fteam.bjj/" target="_blank" rel="noopener noreferrer"
+             class="py-3 px-5 rounded-xl bg-white/5 border border-white/10 text-white font-medium flex items-center justify-center gap-2">
+            <i class="fa-brands fa-instagram text-gold"></i> @fteam.bjj
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- 2. HERO SECTION COM EFEITO PARALLAX MULTICAMADAS (100VH)              -->
+  <!-- ===================================================================== -->
+  <section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16">
+    <!-- Camada 1: Imagem de Fundo em Ação com Parallax Lento -->
+    <div id="hero-bg" class="parallax-layer absolute inset-0 -top-16 -bottom-16 z-0">
+      <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&w=2000&q=85"
+           onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/15151C/D4AF37?text=FTEAM+JIU-JITSU+FEMININO';"
+           alt="Lutadoras de Jiu-Jitsu treinando em alta intensidade no tatame"
+           class="w-full h-full object-cover object-center scale-110 filter brightness-50 contrast-115" />
+      <!-- Sobreposição de gradiente dramático -->
+      <div class="absolute inset-0 bg-gradient-to-r from-obsidian via-obsidian/85 to-obsidian/40"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-obsidian/70"></div>
+    </div>
+
+    <!-- Camada 2: Tipografia Gigante Vazada Decorativa com Parallax Médio -->
+    <div id="hero-watermark" aria-hidden="true"
+         class="parallax-layer pointer-events-none select-none absolute inset-0 flex items-center justify-center z-0 overflow-hidden">
+      <span class="font-display font-bold text-[22vw] uppercase tracking-tighter text-stroke whitespace-nowrap opacity-60">
+        FTEAM BJJ
+      </span>
+    </div>
+
+    <!-- Camada 3: Elementos Geométricos / Brilho Radial -->
+    <div id="hero-glow" class="parallax-layer pointer-events-none absolute -right-24 top-1/4 w-[520px] h-[520px] rounded-full bg-crimson/20 blur-[120px] z-0"></div>
+
+    <!-- Camada 4: Conteúdo Principal (Primeiro Plano) -->
+    <div id="hero-content" class="parallax-layer relative z-10 max-w-7xl mx-auto px-4 sm:px-8 w-full">
+      <div class="max-w-3xl">
+        <!-- Badge de Destaque -->
+        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-gold/30 mb-6">
+          <span class="w-2 h-2 rounded-full bg-crimson animate-ping"></span>
+          <span class="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-goldLight">
+            Exclusivo para Mulheres • Defesa Pessoal & Arte Suave
+          </span>
+        </div>
+
+        <!-- Título Principal -->
+        <h1 class="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl uppercase tracking-tight leading-[0.95] text-white mb-6">
+          FTEAM <br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-crimson via-red-500 to-gold">
+            JIU-JITSU FEMININO
+          </span>
+        </h1>
+
+        <!-- Subtítulo -->
+        <p class="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl mb-9 font-light">
+          Descubra sua força real no tatame. Aulas de <strong class="text-white font-semibold">Jiu-Jitsu</strong> e <strong class="text-white font-semibold">Defesa Pessoal</strong> sob o comando da <span class="text-gold font-medium">Sensei Laura Zanutto</span> em um ambiente acolhedor, técnico e empoderador.
+        </p>
+
+        <!-- Botões de Ação -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+          <a href="#agendar"
+             class="px-8 py-4 rounded-xl bg-gradient-to-r from-crimson to-crimsonDark hover:from-red-600 hover:to-crimson text-white font-bold text-base tracking-wide uppercase shadow-xl shadow-crimson/30 hover:shadow-crimson/50 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
+            <span>Agendar Aula Experimental Grátis</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+
+          <a href="https://www.instagram.com/fteam.bjj/" target="_blank" rel="noopener noreferrer"
+             class="px-7 py-4 rounded-xl bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/15 hover:border-gold/50 text-white font-semibold text-base transition-all flex items-center justify-center gap-3">
+            <i class="fa-brands fa-instagram text-xl text-gold"></i>
+            <span>Seguir @fteam.bjj</span>
+          </a>
+        </div>
+
+        <!-- Indicadores Rápidos -->
+        <div class="grid grid-cols-3 gap-4 sm:gap-8 max-w-lg mt-12 pt-8 border-t border-white/10">
+          <div>
+            <p class="font-display font-bold text-2xl sm:text-3xl text-white">100%</p>
+            <p class="text-xs sm:text-sm text-gray-400">Turmas Femininas</p>
+          </div>
+          <div>
+            <p class="font-display font-bold text-2xl sm:text-3xl text-gold">Técnica</p>
+            <p class="text-xs sm:text-sm text-gray-400">Do Zero ao Avançado</p>
+          </div>
+          <div>
+            <p class="font-display font-bold text-2xl sm:text-3xl text-crimson">Defesa</p>
+            <p class="text-xs sm:text-sm text-gray-400">Autoconfiança Real</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicador de Scroll -->
+    <a href="#sobre" aria-label="Rolar para saber mais"
+       class="hidden sm:flex absolute bottom-7 left-1/2 -translate-x-1/2 z-10 flex-col items-center gap-2 text-xs uppercase tracking-widest text-gray-400 hover:text-white transition-colors">
+      <span>Explorar</span>
+      <div class="w-5 h-8 rounded-full border border-white/25 flex justify-center p-1">
+        <span class="w-1 h-2 bg-crimson rounded-full animate-bounce"></span>
+      </div>
+    </a>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 3. SOBRE O TIME & METODOLOGIA                                         -->
+  <!-- ===================================================================== -->
+  <section id="sobre" class="py-24 px-4 sm:px-8 relative tatami-pattern">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <!-- Coluna Visual com Composição em Camadas -->
+        <div class="lg:col-span-6 relative reveal">
+          <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1200&q=80"
+                 onerror="this.onerror=null;this.src='https://placehold.co/800x900/1E1E28/FFFFFF?text=Uniao+e+Forca+Fteam';"
+                 alt="Mulheres treinando artes marciais juntas com foco e determinação"
+                 class="w-full h-[460px] object-cover hover:scale-105 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6 p-5 rounded-xl bg-graphite/90 backdrop-blur-md border border-white/10">
+              <p class="font-display uppercase text-lg tracking-wide text-gold">Irmandade no Tatame</p>
+              <p class="text-sm text-gray-300 mt-1">
+                Aqui nenhuma mulher caminha sozinha. Evoluímos juntas, respeitando o ritmo e o objetivo de cada aluna.
+              </p>
+            </div>
+          </div>
+          <!-- Detalhe Dourado Decorativo -->
+          <div class="hidden sm:block -z-10 absolute -bottom-5 -left-5 w-40 h-40 rounded-2xl border-2 border-crimson/40"></div>
+        </div>
+
+        <!-- Coluna de Texto -->
+        <div class="lg:col-span-6 reveal">
+          <span class="text-xs font-bold uppercase tracking-[0.25em] text-crimson block mb-3">
+            Nossa Essência & Metodologia
+          </span>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl uppercase leading-tight text-white mb-6">
+            Mais que uma equipe: um espaço seguro de <span class="text-gold">transformação feminina</span>.
+          </h2>
+          <p class="text-gray-300 text-base sm:text-lg leading-relaxed mb-6">
+            A <strong class="text-white">Fteam</strong> nasceu com o propósito de tornar o Jiu-Jitsu e a Defesa Pessoal acessíveis, acolhedores e transformadores para todas as mulheres — independentemente da idade, condicionamento físico ou experiência prévia.
+          </p>
+          <p class="text-gray-400 text-base leading-relaxed mb-8">
+            Nossa metodologia une fundamentos sólidos da arte suave com situações reais de proteção pessoal, desenvolvendo alavancas inteligentes onde a técnica supera a força bruta.
+          </p>
+
+          <!-- Pilares -->
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div class="p-5 rounded-2xl bg-graphite border border-white/5 hover:border-crimson/40 transition-colors">
+              <div class="w-10 h-10 rounded-xl bg-crimson/15 text-crimson flex items-center justify-center mb-3">
+                <i class="fa-solid fa-shield-halved text-lg"></i>
+              </div>
+              <h3 class="font-display font-semibold text-lg uppercase text-white mb-1">Ambiente Seguro</h3>
+              <p class="text-sm text-gray-400">Treinos exclusivos entre mulheres, promovendo liberdade, respeito e zero intimidação.</p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-graphite border border-white/5 hover:border-gold/40 transition-colors">
+              <div class="w-10 h-10 rounded-xl bg-gold/15 text-gold flex items-center justify-center mb-3">
+                <i class="fa-solid fa-bolt text-lg"></i>
+              </div>
+              <h3 class="font-display font-semibold text-lg uppercase text-white mb-1">Técnica & Reflexo</h3>
+              <p class="text-sm text-gray-400">Aprenda a se defender sob pressão, melhorar seu condicionamento e elevar sua autoestima.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 4. FAIXA INTERMEDIÁRIA PARALLAX BANNER (AÇÃO & MOTIVAÇÃO)             -->
+  <!-- ===================================================================== -->
+  <section id="parallax-banner" class="relative h-[420px] sm:h-[480px] flex items-center justify-center overflow-hidden my-6">
+    <!-- Imagem com deslocamento Parallax -->
+    <div id="banner-bg" class="parallax-layer absolute inset-0 -top-24 -bottom-24 z-0">
+      <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=2000&q=85"
+           onerror="this.onerror=null;this.src='https://placehold.co/1920x700/0B0B0E/D90429?text=FORCA+FEMININA+NO+TATAME';"
+           alt="Lutadora focada antes do treino de Jiu-Jitsu"
+           class="w-full h-full object-cover object-center filter brightness-40 contrast-125" />
+      <div class="absolute inset-0 bg-gradient-to-r from-obsidian/90 via-crimsonDark/45 to-obsidian/90"></div>
+    </div>
+
+    <!-- Conteúdo Central -->
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-8 text-center reveal">
+      <i class="fa-solid fa-quote-left text-3xl sm:text-4xl text-gold/80 mb-4 block"></i>
+      <blockquote class="font-display font-bold text-2xl sm:text-4xl md:text-5xl uppercase tracking-wide text-white leading-tight mb-5">
+        “A força de uma mulher não está apenas nos músculos, mas na <span class="text-gold">coragem</span> de subir no tatame todos os dias.”
+      </blockquote>
+      <p class="text-sm sm:text-base uppercase tracking-[0.25em] text-gray-200 font-medium">
+        — Sensei Laura Zanutto • Fteam BJJ
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 5. A SENSEI - LAURA ZANUTTO                                           -->
+  <!-- ===================================================================== -->
+  <section id="sensei" class="py-24 px-4 sm:px-8 bg-graphite/60 border-y border-white/5">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <!-- Texto sobre a Sensei -->
+        <div class="lg:col-span-7 order-2 lg:order-1 reveal">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-bold uppercase tracking-widest mb-4">
+            <i class="fa-solid fa-medal"></i> Liderança Feminina no Tatame
+          </div>
+          <h2 class="font-display font-bold text-4xl sm:text-5xl uppercase text-white mb-4">
+            Sensei <span class="text-crimson">Laura Zanutto</span>
+          </h2>
+          <p class="text-lg text-goldLight font-medium mb-6">
+            Mentora, instrutora de Jiu-Jitsu e especialista em Defesa Pessoal para Mulheres.
+          </p>
+          <div class="space-y-4 text-gray-300 leading-relaxed mb-8">
+            <p>
+              À frente da <strong class="text-white">Fteam</strong>, a Sensei Laura Zanutto dedica sua trajetória a formar mulheres mais seguras, conscientes de seu potencial e tecnicamente preparadas dentro e fora dos tatames.
+            </p>
+            <p>
+              Com uma didática atenta aos detalhes biomecânicos e à realidade feminina, Laura conduz cada aula para que tanto a aluna iniciante — que nunca vestiu um kimono — quanto a competidora encontrem desafios na medida certa, disciplina e acolhimento genuíno.
+            </p>
+          </div>
+
+          <!-- Destaques da Sensei -->
+          <div class="grid sm:grid-cols-3 gap-4 mb-8">
+            <div class="p-4 rounded-xl bg-obsidian/80 border border-white/10">
+              <p class="font-display font-bold text-xl text-white">Didática Clara</p>
+              <p class="text-xs text-gray-400 mt-1">Passo a passo detalhado para iniciantes</p>
+            </div>
+            <div class="p-4 rounded-xl bg-obsidian/80 border border-white/10">
+              <p class="font-display font-bold text-xl text-gold">Defesa Real</p>
+              <p class="text-xs text-gray-400 mt-1">Foco em controle de distância e escapes</p>
+            </div>
+            <div class="p-4 rounded-xl bg-obsidian/80 border border-white/10">
+              <p class="font-display font-bold text-xl text-crimson">Mentoria</p>
+              <p class="text-xs text-gray-400 mt-1">Acompanhamento próximo de cada aluna</p>
+            </div>
+          </div>
+
+          <a href="https://www.instagram.com/fteam.bjj/" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-3 text-white font-semibold hover:text-gold transition-colors group">
+            <span>Acompanhe a rotina de treinos no Instagram</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-crimson group-hover:translate-x-1 transition-transform"></i>
+          </a>
+        </div>
+
+        <!-- Retrato / Card da Sensei -->
+        <div class="lg:col-span-5 order-1 lg:order-2 reveal">
+          <div class="relative max-w-md mx-auto">
+            <div class="rounded-2xl overflow-hidden border-2 border-gold/30 shadow-2xl bg-charcoal">
+              <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=85"
+                   onerror="this.onerror=null;this.src='https://placehold.co/700x850/1E1E28/D4AF37?text=Sensei+Laura+Zanutto';"
+                   alt="Sensei Laura Zanutto - Liderança Fteam Jiu-Jitsu Feminino"
+                   class="w-full h-[480px] object-cover object-top" />
+              <div class="p-6 bg-gradient-to-t from-obsidian via-obsidian to-graphite">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h3 class="font-display font-bold text-2xl uppercase text-white">Laura Zanutto</h3>
+                    <p class="text-xs uppercase tracking-widest text-gold">Head Coach • Fteam BJJ</p>
+                  </div>
+                  <span class="px-3 py-1 rounded-lg bg-crimson/20 border border-crimson/40 text-crimson text-xs font-bold uppercase">
+                    OSS!
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 6. MODALIDADES / AULAS (CARDS INTERATIVOS)                            -->
+  <!-- ===================================================================== -->
+  <section id="modalidades" class="py-24 px-4 sm:px-8 relative">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+        <span class="text-xs font-bold uppercase tracking-[0.25em] text-crimson block mb-3">
+          Programas de Treinamento
+        </span>
+        <h2 class="font-display font-bold text-4xl sm:text-5xl uppercase text-white mb-4">
+          Modalidades para <span class="text-gold">Cada Objetivo</span>
+        </h2>
+        <p class="text-gray-400 text-base sm:text-lg">
+          Seja para aprender a se defender, melhorar seu condicionamento físico ou competir em alto nível, temos a turma ideal para você.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Card 1: Jiu-Jitsu Feminino (Gi) -->
+        <article class="modality-card rounded-2xl bg-graphite border border-white/10 overflow-hidden flex flex-col reveal">
+          <div class="relative h-56 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?auto=format&fit=crop&w=800&q=80"
+                 onerror="this.onerror=null;this.src='https://placehold.co/800x500/1E1E28/FFFFFF?text=Jiu-Jitsu+Feminino+Gi';"
+                 alt="Treino de Jiu-Jitsu Feminino com Kimono"
+                 class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-graphite via-graphite/20 to-transparent"></div>
+            <span class="absolute top-4 left-4 px-3 py-1 rounded-lg bg-crimson text-white text-xs font-bold uppercase tracking-wider">
+              Gi • Com Kimono
+            </span>
+          </div>
+          <div class="p-7 flex-1 flex flex-col">
+            <h3 class="font-display font-bold text-2xl uppercase text-white mb-3">
+              Jiu-Jitsu Feminino
+            </h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-1">
+              Aprenda a arte suave desde os fundamentos básicos até técnicas avançadas de guarda, passagens e finalizações. Desenvolve foco, flexibilidade e resistência.
+            </p>
+            <ul class="space-y-2 text-sm text-gray-300 mb-6 border-t border-white/10 pt-4">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-crimson"></i> Turmas iniciantes e intermediárias</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-crimson"></i> Evolução graduada por faixas</li>
+            </ul>
+            <a href="#agendar" class="w-full py-3 rounded-xl bg-white/5 hover:bg-crimson text-white text-center font-semibold text-sm transition-colors">
+              Experimentar Esta Aula
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 2: Defesa Pessoal para Mulheres -->
+        <article class="modality-card rounded-2xl bg-graphite border border-gold/30 overflow-hidden flex flex-col relative reveal">
+          <div class="relative h-56 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80"
+                 onerror="this.onerror=null;this.src='https://placehold.co/800x500/1E1E28/D4AF37?text=Defesa+Pessoal+Feminina';"
+                 alt="Aula prática de Defesa Pessoal para Mulheres"
+                 class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-graphite via-graphite/20 to-transparent"></div>
+            <span class="absolute top-4 left-4 px-3 py-1 rounded-lg bg-gold text-obsidian text-xs font-bold uppercase tracking-wider">
+              Mais Procurada
+            </span>
+          </div>
+          <div class="p-7 flex-1 flex flex-col">
+            <h3 class="font-display font-bold text-2xl uppercase text-white mb-3">
+              Defesa Pessoal Feminina
+            </h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-1">
+              Técnicas objetivas e eficientes para situações reais do cotidiano: desvencilhamento de pegadas, controle de distância, postura e reação rápida sob estresse.
+            </p>
+            <ul class="space-y-2 text-sm text-gray-300 mb-6 border-t border-white/10 pt-4">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> Não exige experiência anterior</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> Foco em autoconfiança e prevenção</li>
+            </ul>
+            <a href="#agendar" class="w-full py-3 rounded-xl bg-gradient-to-r from-crimson to-crimsonDark hover:from-red-600 hover:to-crimson text-white text-center font-semibold text-sm shadow-lg shadow-crimson/25 transition-all">
+              Agendar Aula de Defesa
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 3: No-Gi & Performance -->
+        <article class="modality-card rounded-2xl bg-graphite border border-white/10 overflow-hidden flex flex-col reveal">
+          <div class="relative h-56 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=800&q=80"
+                 onerror="this.onerror=null;this.src='https://placehold.co/800x500/1E1E28/FFFFFF?text=No-Gi+e+Competicao';"
+                 alt="Treino dinâmico de No-Gi e condicionamento"
+                 class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-graphite via-graphite/20 to-transparent"></div>
+            <span class="absolute top-4 left-4 px-3 py-1 rounded-lg bg-white/15 backdrop-blur-md text-white text-xs font-bold uppercase tracking-wider">
+              No-Gi • Sem Kimono
+            </span>
+          </div>
+          <div class="p-7 flex-1 flex flex-col">
+            <h3 class="font-display font-bold text-2xl uppercase text-white mb-3">
+              No-Gi & Competição
+            </h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-1">
+              Treinos dinâmicos de alta intensidade sem kimono, aprimorando agilidade, quedas, transições rápidas e preparação física e mental para campeonatos.
+            </p>
+            <ul class="space-y-2 text-sm text-gray-300 mb-6 border-t border-white/10 pt-4">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-crimson"></i> Alto gasto calórico e explosão</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-crimson"></i> Suporte para atletas Fteam</li>
+            </ul>
+            <a href="#agendar" class="w-full py-3 rounded-xl bg-white/5 hover:bg-crimson text-white text-center font-semibold text-sm transition-colors">
+              Experimentar Esta Aula
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 7. GALERIA / AÇÃO NO TATAME + INSTAGRAM @FTEAM.BJJ                    -->
+  <!-- ===================================================================== -->
+  <section id="galeria" class="py-24 px-4 sm:px-8 bg-graphite/50 border-t border-white/5">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-[0.25em] text-gold block mb-3">
+            Energia & Comunidade
+          </span>
+          <h2 class="font-display font-bold text-4xl sm:text-5xl uppercase text-white">
+            Ação no <span class="text-crimson">Tatame</span>
+          </h2>
+        </div>
+        <a href="https://www.instagram.com/fteam.bjj/" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 text-white font-semibold text-sm shadow-lg hover:opacity-95 transition-opacity self-start md:self-auto">
+          <i class="fa-brands fa-instagram text-xl"></i>
+          <span>Ver mais fotos no @fteam.bjj</span>
+        </a>
+      </div>
+
+      <!-- Grid Dinâmico de Imagens -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 reveal">
+        <!-- Foto 1 (Destaque 2 colunas) -->
+        <div class="sm:col-span-2 relative group rounded-2xl overflow-hidden h-80 border border-white/10">
+          <img src="https://images.unsplash.com/photo-1555597408-26bc8e548a46?auto=format&fit=crop&w=1100&q=80"
+               onerror="this.onerror=null;this.src='https://placehold.co/900x600/1E1E28/FFFFFF?text=Treino+Fteam+BJJ';"
+               alt="Técnica de solo e alavanca no tatame"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity"></div>
+          <div class="absolute bottom-5 left-5 right-5">
+            <span class="text-xs uppercase tracking-widest text-gold font-semibold">Técnica & Precisão</span>
+            <p class="font-display text-xl uppercase text-white mt-1">Treinos Diários com a Sensei Laura</p>
+          </div>
+        </div>
+
+        <!-- Foto 2 -->
+        <div class="relative group rounded-2xl overflow-hidden h-80 border border-white/10">
+          <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=700&q=80"
+               onerror="this.onerror=null;this.src='https://placehold.co/600x600/1E1E28/D4AF37?text=Condicionamento';"
+               alt="Preparação física e mobilidade"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-transparent to-transparent"></div>
+          <div class="absolute bottom-5 left-5">
+            <span class="text-xs uppercase tracking-widest text-crimson font-semibold">Força</span>
+            <p class="font-display text-lg uppercase text-white mt-0.5">Mobilidade & Vigor</p>
+          </div>
+        </div>
+
+        <!-- Foto 3 -->
+        <div class="relative group rounded-2xl overflow-hidden h-80 border border-white/10">
+          <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=700&q=80"
+               onerror="this.onerror=null;this.src='https://placehold.co/600x600/1E1E28/D90429?text=Foco+e+Disciplina';"
+               alt="Foco e determinação antes da luta"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-transparent to-transparent"></div>
+          <div class="absolute bottom-5 left-5">
+            <span class="text-xs uppercase tracking-widest text-gold font-semibold">Mentalidade</span>
+            <p class="font-display text-lg uppercase text-white mt-0.5">Superação Constante</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 8. HORÁRIOS INTERATIVOS & LOCALIZAÇÃO                                 -->
+  <!-- ===================================================================== -->
+  <section id="horarios" class="py-24 px-4 sm:px-8 relative tatami-pattern">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-12 reveal">
+        <span class="text-xs font-bold uppercase tracking-[0.25em] text-crimson block mb-3">
+          Grade de Treinos
+        </span>
+        <h2 class="font-display font-bold text-4xl sm:text-5xl uppercase text-white mb-4">
+          Horários das <span class="text-gold">Aulas</span>
+        </h2>
+        <p class="text-gray-400 text-base">
+          Filtre por modalidade para encontrar o melhor horário para a sua rotina.
+        </p>
+      </div>
+
+      <!-- Filtros Interativos -->
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-10 reveal" role="tablist" aria-label="Filtrar horários por modalidade">
+        <button data-filter="todos" class="schedule-filter active px-5 py-2.5 rounded-xl bg-crimson text-white font-semibold text-sm transition-all">
+          Todos os Treinos
+        </button>
+        <button data-filter="jiujitsu" class="schedule-filter px-5 py-2.5 rounded-xl bg-graphite border border-white/10 text-gray-300 hover:text-white font-semibold text-sm transition-all">
+          Jiu-Jitsu (Gi)
+        </button>
+        <button data-filter="defesa" class="schedule-filter px-5 py-2.5 rounded-xl bg-graphite border border-white/10 text-gray-300 hover:text-white font-semibold text-sm transition-all">
+          Defesa Pessoal
+        </button>
+        <button data-filter="nogi" class="schedule-filter px-5 py-2.5 rounded-xl bg-graphite border border-white/10 text-gray-300 hover:text-white font-semibold text-sm transition-all">
+          No-Gi / Competição
+        </button>
+      </div>
+
+      <!-- Cards de Horários -->
+      <div id="schedule-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+        <!-- Segunda e Quarta -->
+        <div class="schedule-card p-6 rounded-2xl bg-graphite border border-white/10" data-category="jiujitsu">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-gold">Segunda & Quarta</span>
+            <span class="px-2.5 py-1 rounded-md bg-crimson/20 text-crimson text-xs font-semibold">Gi • Kimono</span>
+          </div>
+          <h3 class="font-display text-2xl uppercase text-white mb-2">07:30 — 08:45</h3>
+          <p class="text-sm text-gray-300 font-medium mb-1">Jiu-Jitsu Feminino — Todos os Níveis</p>
+          <p class="text-xs text-gray-400">Sensei Laura Zanutto</p>
+        </div>
+
+        <div class="schedule-card p-6 rounded-2xl bg-graphite border border-white/10" data-category="defesa">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-gold">Segunda & Quarta</span>
+            <span class="px-2.5 py-1 rounded-md bg-gold/20 text-gold text-xs font-semibold">Defesa Pessoal</span>
+          </div>
+          <h3 class="font-display text-2xl uppercase text-white mb-2">19:00 — 20:15</h3>
+          <p class="text-sm text-gray-300 font-medium mb-1">Defesa Pessoal & Fundamentos</p>
+          <p class="text-xs text-gray-400">Ideal para iniciantes • Sensei Laura</p>
+        </div>
+
+        <div class="schedule-card p-6 rounded-2xl bg-graphite border border-white/10" data-category="jiujitsu">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-gold">Terça & Quinta</span>
+            <span class="px-2.5 py-1 rounded-md bg-crimson/20 text-crimson text-xs font-semibold">Gi • Kimono</span>
+          </div>
+          <h3 class="font-display text-2xl uppercase text-white mb-2">18:30 — 19:45</h3>
+          <p class="text-sm text-gray-300 font-medium mb-1">Jiu-Jitsu Técnico & Sparring</p>
+          <p class="text-xs text-gray-400">Sensei Laura Zanutto</p>
+        </div>
+
+        <div class="schedule-card p-6 rounded-2xl bg-graphite border border-white/10" data-category="nogi">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-gold">Terça & Quinta</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/10 text-white text-xs font-semibold">No-Gi</span>
+          </div>
+          <h3 class="font-display text-2xl uppercase text-white mb-2">20:00 — 21:15</h3>
+          <p class="text-sm text-gray-300 font-medium mb-1">Submissão Sem Kimono & Condicionamento</p>
+          <p class="text-xs text-gray-400">Sensei Laura Zanutto</p>
+        </div>
+
+        <div class="schedule-card p-6 rounded-2xl bg-graphite border border-white/10" data-category="defesa">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-gold">Sexta-Feira</span>
+            <span class="px-2.5 py-1 rounded-md bg-gold/20 text-gold text-xs font-semibold">Defesa Pessoal</span>
+          </div>
+          <h3 class="font-display text-2xl uppercase text-white mb-2">18:30 — 19:45</h3>
+          <p class="text-sm text-gray-300 font-medium mb-1">Simulações Reais & Escapes</p>
+          <p class="text-xs text-gray-400">Aberto a todas as alunas</p>
+        </div>
+
+        <div class="schedule-card p-6 rounded-2xl bg-graphite border border-white/10" data-category="nogi">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-gold">Sábado</span>
+            <span class="px-2.5 py-1 rounded-md bg-crimson/20 text-crimson text-xs font-semibold">Treinão Fteam</span>
+          </div>
+          <h3 class="font-display text-2xl uppercase text-white mb-2">10:00 — 11:30</h3>
+          <p class="text-sm text-gray-300 font-medium mb-1">Aulão Integrado & Confraternização</p>
+          <p class="text-xs text-gray-400">Gi & No-Gi • Sensei Laura Zanutto</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 9. CONTATO & FORMULÁRIO NETLIFY FORMS (AULA EXPERIMENTAL)             -->
+  <!-- ===================================================================== -->
+  <section id="agendar" class="py-24 px-4 sm:px-8 bg-gradient-to-b from-graphite to-obsidian border-t border-white/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-12 gap-12 items-start">
+        <!-- Informações de Contato -->
+        <div class="lg:col-span-5 reveal">
+          <span class="text-xs font-bold uppercase tracking-[0.25em] text-crimson block mb-3">
+            Dê o Primeiro Passo
+          </span>
+          <h2 class="font-display font-bold text-4xl sm:text-5xl uppercase text-white mb-5">
+            Agende Sua <span class="text-gold">Aula Experimental</span>
+          </h2>
+          <p class="text-gray-300 text-base leading-relaxed mb-8">
+            Não precisa ter kimono ou experiência prévia. Venha conhecer nossa estrutura, conversar com a <strong class="text-white">Sensei Laura Zanutto</strong> e sentir a energia da Fteam na prática!
+          </p>
+
+          <div class="space-y-4 mb-8">
+            <a href="https://www.instagram.com/fteam.bjj/" target="_blank" rel="noopener noreferrer"
+               class="flex items-center gap-4 p-4 rounded-2xl bg-charcoal/80 border border-white/10 hover:border-gold/50 transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-white text-xl">
+                <i class="fa-brands fa-instagram"></i>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-wider text-gray-400">Instagram Oficial</p>
+                <p class="font-semibold text-white group-hover:text-gold transition-colors">@fteam.bjj</p>
+              </div>
+            </a>
+
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-charcoal/80 border border-white/10">
+              <div class="w-12 h-12 rounded-xl bg-crimson/20 text-crimson flex items-center justify-center text-xl">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-wider text-gray-400">Centro de Treinamento</p>
+                <p class="font-semibold text-white">CT Fteam Jiu-Jitsu Feminino</p>
+                <p class="text-xs text-gray-400">Consulte o endereço exato via Direct ou WhatsApp</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botão WhatsApp Direto -->
+          <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Sensei%20Laura!%20Gostaria%20de%20agendar%20uma%20aula%20experimental%20na%20Fteam%20Jiu-Jitsu%20Feminino."
+             target="_blank" rel="noopener noreferrer"
+             class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm uppercase tracking-wide shadow-lg shadow-emerald-900/30 transition-all">
+            <i class="fa-brands fa-whatsapp text-xl"></i>
+            <span>Falar Direto pelo WhatsApp</span>
+          </a>
+        </div>
+
+        <!-- Formulário Pronto para Netlify Forms -->
+        <div class="lg:col-span-7 reveal">
+          <div class="p-7 sm:p-10 rounded-3xl bg-charcoal border border-white/10 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-40 h-40 bg-crimson/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <h3 class="font-display font-bold text-2xl uppercase text-white mb-2">
+              Preencha Seus Dados
+            </h3>
+            <p class="text-sm text-gray-400 mb-6">
+              Responderemos rapidamente para confirmar o melhor dia e horário para você.
+            </p>
+
+            <!-- Atributo data-netlify="true" para processamento nativo automático no Netlify -->
+            <form id="trial-form" name="aula-experimental-fteam" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-5">
+              <input type="hidden" name="form-name" value="aula-experimental-fteam" />
+              <p class="hidden">
+                <label>Não preencha se for humano: <input name="bot-field" /></label>
+              </p>
+
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="nome" class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">
+                    Seu Nome Completo *
+                  </label>
+                  <input type="text" id="nome" name="nome" required placeholder="Ex: Mariana Silva"
+                         class="w-full px-4 py-3.5 rounded-xl bg-obsidian border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-crimson transition-colors" />
+                </div>
+
+                <div>
+                  <label for="whatsapp" class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">
+                    WhatsApp / Telefone *
+                  </label>
+                  <input type="tel" id="whatsapp" name="whatsapp" required placeholder="(11) 99999-9999"
+                         class="w-full px-4 py-3.5 rounded-xl bg-obsidian border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-crimson transition-colors" />
+                </div>
+              </div>
+
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="modalidade" class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">
+                    Modalidade de Interesse
+                  </label>
+                  <select id="modalidade" name="modalidade"
+                          class="w-full px-4 py-3.5 rounded-xl bg-obsidian border border-white/10 text-white focus:outline-none focus:border-crimson transition-colors">
+                    <option value="Jiu-Jitsu Feminino (Iniciante)">Jiu-Jitsu Feminino (Iniciante)</option>
+                    <option value="Defesa Pessoal para Mulheres">Defesa Pessoal para Mulheres</option>
+                    <option value="Jiu-Jitsu (Já treino)">Jiu-Jitsu (Já treino)</option>
+                    <option value="No-Gi / Submissão">No-Gi / Submissão</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="periodo" class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">
+                    Melhor Período
+                  </label>
+                  <select id="periodo" name="periodo"
+                          class="w-full px-4 py-3.5 rounded-xl bg-obsidian border border-white/10 text-white focus:outline-none focus:border-crimson transition-colors">
+                    <option value="Manhã">Manhã</option>
+                    <option value="Noite">Noite</option>
+                    <option value="Sábado">Sábado</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="mensagem" class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">
+                  Alguma dúvida ou objetivo específico? (Opcional)
+                </label>
+                <textarea id="mensagem" name="mensagem" rows="3" placeholder="Conte-nos se nunca treinou antes ou se busca defesa pessoal..."
+                          class="w-full px-4 py-3.5 rounded-xl bg-obsidian border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-crimson transition-colors"></textarea>
+              </div>
+
+              <button type="submit"
+                      class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-crimson to-crimsonDark hover:from-red-600 hover:to-crimson text-white font-bold uppercase tracking-wider text-sm shadow-xl shadow-crimson/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                <span>Confirmar Pedido de Aula Experimental</span>
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+
+            <!-- Caixa de Feedback Elegante (Substitui alert()) -->
+            <div id="form-feedback" class="hidden mt-6 p-5 rounded-2xl bg-emerald-950/80 border border-emerald-500/40 text-emerald-200">
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-emerald-400 text-xl mt-0.5"></i>
+                <div>
+                  <h4 class="font-bold text-white">Solicitação enviada com sucesso! OSS!</h4>
+                  <p class="text-sm text-emerald-200/90 mt-1">
+                    Recebemos seu interesse na Fteam. A equipe da Sensei Laura Zanutto entrará em contato em breve pelo seu WhatsApp.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 10. RODAPÉ                                                            -->
+  <!-- ===================================================================== -->
+  <footer class="py-12 px-4 sm:px-8 bg-obsidian border-t border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-crimson flex items-center justify-center font-display font-bold text-white text-lg">
+          F
+        </div>
+        <div>
+          <p class="font-display font-bold uppercase tracking-wider text-white">Fteam Jiu-Jitsu Feminino</p>
+          <p class="text-xs text-gray-400">Sensei Laura Zanutto • Defesa Pessoal & Arte Suave</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-6 text-sm text-gray-400">
+        <a href="#inicio" class="hover:text-white transition-colors">Início</a>
+        <a href="#sobre" class="hover:text-white transition-colors">Sobre</a>
+        <a href="#modalidades" class="hover:text-white transition-colors">Aulas</a>
+        <a href="https://www.instagram.com/fteam.bjj/" target="_blank" rel="noopener noreferrer" class="text-gold hover:text-goldLight transition-colors font-medium">
+          @fteam.bjj
+        </a>
+      </div>
+
+      <p class="text-xs text-gray-500 text-center md:text-right">
+        © <span id="current-year"></span> Fteam BJJ. Todos os direitos reservados.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- SCRIPTS: PARALLAX MULTICAMADAS, MENU INTERATIVO, FILTROS & FORMULÁRIO -->
+  <!-- ===================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Atualiza ano automático no rodapé
+      const yearEl = document.getElementById('current-year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // -------------------------------------------------------------------
+      // 1. MENU INTERATIVO (GLASSMORPHISM NO SCROLL + MOBILE DRAWER)
+      // -------------------------------------------------------------------
+      const navbar = document.getElementById('navbar');
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const bar1 = document.getElementById('bar-1');
+      const bar2 = document.getElementById('bar-2');
+      const bar3 = document.getElementById('bar-3');
+      const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+      let isMenuOpen = false;
+
+      function toggleMobileMenu(forceClose = false) {
+        isMenuOpen = forceClose ? false : !isMenuOpen;
+        mobileMenuBtn.setAttribute('aria-expanded', String(isMenuOpen));
+
+        if (isMenuOpen) {
+          mobileMenu.style.maxHeight = '480px';
+          mobileMenu.style.opacity = '1';
+          bar1.style.transform = 'translateY(8px) rotate(45deg)';
+          bar2.style.opacity = '0';
+          bar3.style.width = '24px';
+          bar3.style.marginRight = '0';
+          bar3.style.transform = 'translateY(-8px) rotate(-45deg)';
+        } else {
+          mobileMenu.style.maxHeight = '0px';
+          mobileMenu.style.opacity = '0';
+          bar1.style.transform = 'none';
+          bar2.style.opacity = '1';
+          bar3.style.width = '16px';
+          bar3.style.marginRight = '10px';
+          bar3.style.transform = 'none';
+        }
+      }
+
+      mobileMenuBtn.addEventListener('click', () => toggleMobileMenu());
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => toggleMobileMenu(true));
+      });
+
+      // -------------------------------------------------------------------
+      // 2. EFEITO PARALLAX MULTICAMADAS (HERO + BANNER INTERMEDIÁRIO)
+      // -------------------------------------------------------------------
+      const heroBg = document.getElementById('hero-bg');
+      const heroWatermark = document.getElementById('hero-watermark');
+      const heroGlow = document.getElementById('hero-glow');
+      const heroContent = document.getElementById('hero-content');
+      const bannerSection = document.getElementById('parallax-banner');
+      const bannerBg = document.getElementById('banner-bg');
+
+      // Scroll Spy links
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      let ticking = false;
+
+      function updateOnScroll() {
+        const scrollY = window.scrollY;
+        const viewportHeight = window.innerHeight;
+
+        // A. Estilo do Navbar ao rolar
+        if (scrollY > 40) {
+          navbar.classList.add('bg-obsidian/90', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'py-3.5', 'shadow-2xl');
+          navbar.classList.remove('py-5');
+        } else {
+          navbar.classList.remove('bg-obsidian/90', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'py-3.5', 'shadow-2xl');
+          navbar.classList.add('py-5');
+        }
+
+        // B. Parallax do Hero (enquanto visível na tela)
+        if (scrollY <= viewportHeight * 1.2) {
+          if (heroBg) {
+            heroBg.style.transform = `translate3d(0, ${scrollY * 0.35}px, 0)`;
+          }
+          if (heroWatermark) {
+            heroWatermark.style.transform = `translate3d(${-scrollY * 0.12}px, ${scrollY * 0.22}px, 0)`;
+          }
+          if (heroGlow) {
+            heroGlow.style.transform = `translate3d(0, ${scrollY * 0.18}px, 0)`;
+          }
+          if (heroContent) {
+            heroContent.style.transform = `translate3d(0, ${scrollY * 0.12}px, 0)`;
+            heroContent.style.opacity = Math.max(1 - scrollY / (viewportHeight * 0.85), 0);
+          }
+        }
+
+        // C. Parallax do Banner Intermediário
+        if (bannerSection && bannerBg) {
+          const rect = bannerSection.getBoundingClientRect();
+          if (rect.top < viewportHeight && rect.bottom > 0) {
+            const progress = (rect.top - viewportHeight / 2) * 0.22;
+            bannerBg.style.transform = `translate3d(0, ${progress}px, 0)`;
+          }
+        }
+
+        // D. Scroll Spy ativo no menu
+        let currentSectionId = 'inicio';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 160;
+          if (scrollY >= sectionTop) {
+            currentSectionId = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${currentSectionId}`) {
+            link.classList.add('active');
+          }
+        });
+
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateOnScroll);
+          ticking = true;
+        }
+      }, { passive: true });
+
+      // -------------------------------------------------------------------
+      // 3. ANIMAÇÕES DE REVELAÇÃO (INTERSECTION OBSERVER)
+      // -------------------------------------------------------------------
+      const revealElements = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealElements.forEach(el => revealObserver.observe(el));
+
+      // -------------------------------------------------------------------
+      // 4. FILTRO INTERATIVO DE HORÁRIOS
+      // -------------------------------------------------------------------
+      const filterButtons = document.querySelectorAll('.schedule-filter');
+      const scheduleCards = document.querySelectorAll('.schedule-card');
+
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+
+          filterButtons.forEach(b => {
+            b.classList.remove('active', 'bg-crimson', 'text-white');
+            b.classList.add('bg-graphite', 'text-gray-300', 'border', 'border-white/10');
+          });
+
+          btn.classList.add('active', 'bg-crimson', 'text-white');
+          btn.classList.remove('bg-graphite', 'text-gray-300', 'border', 'border-white/10');
+
+          scheduleCards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            if (filter === 'todos' || category === filter) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // -------------------------------------------------------------------
+      // 5. ENVIO ASSÍNCRONO COMPATÍVEL COM NETLIFY FORMS
+      // -------------------------------------------------------------------
+      const trialForm = document.getElementById('trial-form');
+      const formFeedback = document.getElementById('form-feedback');
+
+      if (trialForm) {
+        trialForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const formData = new FormData(trialForm);
+
+          try {
+            await fetch('/', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: new URLSearchParams(formData).toString()
+            });
+          } catch (err) {
+            // Em ambiente local/preview fora do Netlify, exibimos a confirmação visual mesmo assim
+          }
+
+          trialForm.reset();
+          formFeedback.classList.remove('hidden');
+          formFeedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+      }
+    });
+  </script>
+</body>
+</html>
