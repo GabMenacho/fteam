@@ -122,6 +122,13 @@
       color: transparent;
     }
 
+    /* Contorno lilás vazado garantido para o FTEAM BJJ de fundo */
+    .contorno-lilas {
+      color: transparent !important;
+      -webkit-text-stroke: 2.5px #C4B5FD !important;
+      text-stroke: 2.5px #C4B5FD !important;
+    }
+
     /* Barra de rolagem customizada P&B + Roxo */
     ::-webkit-scrollbar {
       width: 8px;
@@ -224,11 +231,13 @@
   <section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16">
     <!-- Camada 1: Foto Real de Ação em P&B (IMG-20260910-WA0145.jpg) -->
     <div id="hero-bg" class="parallax-layer absolute inset-0 -top-16 -bottom-16 z-0">
-      <img src="assets/img/IMG-20260910-WA0145.jpg"
+      <img src="assets/img/IMG-20260910-WA0145.jpg">
+
     <!-- Camada 2: Marca d'Água Gigante FTEAM com Parallax Médio -->
     <div id="hero-watermark" aria-hidden="true"
-         class="parallax-layer pointer-events-none select-none absolute inset-0 flex items-center justify-end pr-6 z-0 overflow-hidden">
-      <span class="font-display font-bold text-[22vw] uppercase tracking-tighter text-stroke whitespace-nowrap opacity-65">
+         class="parallax-layer pointer-events-none select-none absolute inset-0 flex items-center justify-end pr-6 z-[1] overflow-hidden">
+      <!-- Usando a classe contorno-lilas garantida, sem blur para não sumir e opacidade ajustada -->
+      <span class="font-display font-bold text-[18vw] md:text-[20vw] uppercase tracking-tighter contorno-lilas whitespace-nowrap opacity-30 md:opacity-50 transition-all duration-300">
         fteam bjj
       </span>
     </div>
@@ -631,7 +640,7 @@
                class="w-full h-full object-cover photo-bw photo-bw-hover group-hover:scale-105" />
           <div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-transparent to-transparent opacity-80 group-hover:opacity-95 transition-opacity"></div>
           <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-            <span class="text-xs font-semibold uppercase tracking-wider text-lilac">Jiu-Jtsu</span>
+            <span class="text-xs font-semibold uppercase tracking-wider text-lilac"></span>
             <i class="fa-solid fa-expand text-white/80 text-sm"></i>
           </div>
         </button>
